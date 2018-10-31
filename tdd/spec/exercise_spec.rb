@@ -59,3 +59,47 @@ RSpec.describe do
     end
   end
 end
+
+RSpec.describe TowersOfHanoi do
+  subject(:game) {TowersOfHanoi.new}
+
+  describe "#initialize" do
+    it "contains three towers" do
+      expect(game.tower0).to eq([3, 2, 1])
+      expect(game.tower1).to eq([])
+      expect(game.tower2).to eq([])
+    end
+
+    it "starts the discs on tower 0" do
+      expect(game.tower0).to eq([3, 2, 1])
+    end
+
+  end
+
+  describe "#move" do
+    it "takes 0, 1, or 2 as input" do
+      expect{game.move("start", game.tower2)}.to raise_error(ArgumentError)
+      expect{game.move(5, game.tower0)}.to raise_error(ArgumentError)
+    end
+
+    it "performs the move if it's valid" do
+      game.move(game.tower0, game.tower2)
+      expect(game.tower0).to eq([3, 2])
+      expect(game.tower1).to eq([])
+      expect(game.tower2).to eq([1])
+    end
+  end
+
+  describe "#won?" do
+    it "returns true if the game is won" do
+      game.tower0 = []
+      game.tower1 = []
+      game.tower2 = [3, 2, 1]
+      expect(game).to be_won #maybe will fail
+    end
+
+    it "returns false if not" do
+      expect(game).to_not be_won
+    end
+  end
+end

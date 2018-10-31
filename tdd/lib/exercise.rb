@@ -63,3 +63,36 @@ def stock_picker(prices_per_day)
   end
   index_pair
 end
+
+class TowersOfHanoi
+  attr_accessor :tower0, :tower1, :tower2
+
+  def initialize
+    @tower0 = [3, 2, 1]
+    @tower1 = []
+    @tower2 = []
+  end
+
+  def move(start_tow, end_tow)
+    raise ArgumentError unless start_tow.is_a?(Array)
+    raise ArgumentError unless end_tow.is_a?(Array)
+
+    if is_valid_move?(start_tow, end_tow)
+      end_tow.push(start_tow.pop)
+    end
+  end
+
+  def won?
+    return true if @tower1.length == 3 && @tower1.sort.reverse == @tower1
+    return true if @tower2.length == 3 && @tower2.sort.reverse == @tower2
+    false
+  end
+
+  private
+
+  def is_valid_move?(start_tower, end_tower)
+    return false if start_tower.empty?
+    return false if !end_tower.empty? && start_tower[-1] > end_tower[-1]
+    true
+  end
+end
