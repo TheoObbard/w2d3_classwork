@@ -1,0 +1,31 @@
+/* new css stylesheet */
+
+body {
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+  background: burlywood;
+}
+
+h1 {
+  font-size: 38px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+. ingredients {
+  list-style: square inside;
+}
+
+ol {
+  list-style: circle;
+}
+
+header > img {
+  width: 100px;
+}
+
+ul li a {
+    text-decoration: none; /* This assures the a elements are not underlined */
+}
