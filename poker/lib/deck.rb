@@ -2,9 +2,9 @@ require_relative "card"
 
 class Deck
   attr_reader :box
-
-  SUITS = ["clubs", "diamonds", "hearts", "spades"]
-  VALUES = ["ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"]
+  
+  SUITS = ["clubs", "diamonds", "hearts", "spades"].freeze
+  VALUES = ["ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"].freeze
 
   def initialize
     @box = create_deck

@@ -23,6 +23,7 @@ RSpec.describe Deck do
       expect(player.hand).to eq([])
       deck.distribute_cards(player)
       expect(player.hand.length).to eq(1)
+      expect(deck.box.length).to eq(51)
     end
   end
 end
